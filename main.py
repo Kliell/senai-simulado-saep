@@ -1,9 +1,8 @@
 from fastapi import FastAPI
 from database import engine, Base
-import models  # IMPORTANTE: importar antes do create_all
+from routers import usuarios, produtos, movimentacoes
 
-# TODO: importe os routers aqui
-# from routers import usuarios, produtos, movimentacoes
+# TODO: importe os routers aqui from routers import usuarios, produtos, movimentacoes
 
 app = FastAPI(
     title="API de Almoxarifado",
@@ -15,9 +14,9 @@ app = FastAPI(
 Base.metadata.create_all(bind=engine)
 
 # TODO: monte os routers no app
-# app.include_router(usuarios.router)
-# app.include_router(produtos.router)
-# app.include_router(movimentacoes.router)
+app.include_router(usuarios.router)
+app.include_router(produtos.router)
+app.include_router(movimentacoes.router)
 
 
 @app.get("/")
