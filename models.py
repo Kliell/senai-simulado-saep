@@ -14,6 +14,7 @@ class Usuario(Base):
     nome = Column(String (100))
     login = Column(String (50), unique=True)
     perfil = Column(String(20))
+    senha_hash = Column(String(250), nullable=False)
 
     # pass
 
